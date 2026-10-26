@@ -73,7 +73,7 @@ export default function CreateProduct(){
                 newProduct,
                 /*{
                     headers:{
-                        authorization: `Bearer ${userData.token}`
+                        authorization: `Bearer ${userData?.token}`
                     }
                 }*/
             )
@@ -120,7 +120,7 @@ export default function CreateProduct(){
             await axios.delete(`${BACK_URL}/r2/delete`, {
                 data: { publicUrl },
                 headers: {
-                    authorization: `Bearer ${userData.token}`,
+                    authorization: `Bearer ${userData?.token}`,
                 },
             });
 
@@ -154,7 +154,7 @@ export default function CreateProduct(){
                 formData,
                 {
                     headers: {
-                        authorization: `Bearer ${userData.token}`,
+                        authorization: `Bearer ${userData?.token}`,
                     },
                 }
             );

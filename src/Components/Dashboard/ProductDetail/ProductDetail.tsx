@@ -74,7 +74,7 @@ export default function ProductDetailDash(){
                 productModified,
                 {
                     headers:{
-                        authorization: `Bearer ${userData.token}`
+                        authorization: `Bearer ${userData?.token}`
                     }
                 }
             )

@@ -1,0 +1,57 @@
+
+.divMayor {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.titlesContainer,
+.oneProduct {
+    display: grid;
+    grid-template-columns: 90px 1.2fr 1fr 100px 2fr 1fr;
+    column-gap: 12px;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.titlesContainer {
+    padding: 0 16px;
+}
+
+.titlesContainer label {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 1rem 0;
+}
+
+.productsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.oneProduct {
+    padding: 1rem 16px;
+    border-bottom: 1px solid #dce5f0;
+    cursor: pointer;
+}
+
+.oneProduct label {
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.imageContainer {
+    width: 50px;
+    height: 50px;
+}
+
+.image {
+    display: block;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}

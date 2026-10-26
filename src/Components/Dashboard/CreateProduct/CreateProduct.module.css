@@ -1,0 +1,191 @@
+.divMayor {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+
+    margin: 24px auto;
+    padding: 32px;
+
+    background-color: #FFFFFF;
+    border: 1px solid #DCE5F0;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(11, 31, 58, 0.07);
+
+    color: #0B1F3A;
+    font-family: Arial, sans-serif;
+}
+
+.divMayor > label {
+    display: block;
+    margin-top: 12px;
+
+    color: #334155;
+    background: transparent;
+    min-width: 0;
+    text-align: left;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.divMayor input:not([type="checkbox"]):not([type="file"]),
+.divMayor textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+
+    color: #0B1F3A;
+    font: inherit;
+
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.divMayor textarea {
+    display: block;
+    min-width: 100%;
+    min-height: 120px;
+    box-sizing: border-box;
+
+}
+
+.divMayor input:focus,
+.divMayor textarea:focus {
+    outline: none;
+    border-color: #0755C9;
+    box-shadow: 0 0 0 3px rgba(7, 85, 201, 0.12);
+}
+
+.divMayor input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #0755C9;
+    cursor: pointer;
+}
+
+.inputContainerPhoto,
+.uploadObj,
+.photoContainer,
+.objContainer {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 16px;
+
+    border: 1px dashed #CBD5E1;
+    border-radius: 10px;
+    background-color: #F8FAFC;
+}
+
+.fileUpload,
+.uploadObj input[type="file"] {
+    display: block;
+    max-width: 100%;
+    margin-top: 10px;
+}
+
+.photoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+}
+
+.photoContainer img {
+    display: block;
+    max-width: 100%;
+    max-height: 240px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.faXicon,
+.iconX {
+    color: #DC2626;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.faXicon {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
+
+.iconX {
+    margin-left: 12px;
+}
+
+.faXicon:hover,
+.iconX:hover {
+    color: #991B1B;
+    transform: scale(1.12);
+}
+
+.objContainer label,
+.uploadObj label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    color: #334155;
+    background: transparent;
+    min-width: 0;
+    text-align: left;
+    font-weight: 600;
+}
+
+.divMayor > button {
+    width: 100%;
+    padding: 12px 16px;
+    margin-top: 12px;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    background-color: #0755C9;
+    color: #FFFFFF;
+
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.divMayor > button:hover {
+    background-color: #0645A5;
+    transform: translateY(-1px);
+}
+
+.divMayor > button:last-child {
+    background-color: #FFFFFF;
+    color: #0755C9;
+    border-color: #CBD5E1;
+}
+
+.divMayor > button:last-child:hover {
+    background-color: #F3F7FC;
+}
+
+.uploadObj p {
+    margin-bottom: 0;
+    color: #0755C9;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .divMayor {
+        padding: 20px;
+        margin: 12px auto;
+        border-radius: 10px;
+    }
+}

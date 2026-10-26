@@ -1,3 +1,4 @@
+
 .divMayor {
     display: flex;
     align-items: center;
@@ -20,20 +21,19 @@
 .logo {
     display: block;
     flex-shrink: 0;
-
     width: 4.5rem;
     height: 4.5rem;
     object-fit: contain;
-
     cursor: pointer;
 }
+
 .divMayor h1 {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #0066cc;
-  line-height: 1.2;
-  white-space: nowrap;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0066cc;
+    line-height: 1.2;
+    white-space: nowrap;
 }
 
 .divContainer {
@@ -66,13 +66,10 @@
     position: absolute;
     bottom: 0;
     left: 0;
-
     width: 0;
     height: 2px;
-
     background: #007BFF;
     border-radius: 2px;
-
     transition: width 0.2s ease;
 }
 
@@ -84,37 +81,100 @@
     width: 100%;
 }
 
-/* =========================
-   RESPONSIVE
-   ========================= */
+/* Botón hamburguesa: oculto en PC */
+.menuButton {
+    display: none;
+}
 
-@media (max-width: 600px) {
+/* Menú móvil */
+@media (max-width: 700px) {
     .divMayor {
-        flex-direction: column;
-        justify-content: center;
-        gap: 0.25rem;
-        padding: 0.5rem 1rem 0.75rem;
+        display: grid;
+        grid-template-columns: 3rem 1fr 3rem;
+        grid-template-rows: auto auto;
+        align-items: center;
+        justify-items: center;
+        gap: 0.25rem 0.5rem;
+
+        min-height: auto;
+        padding: 0.5rem 1rem;
     }
 
     .logo {
-        width: 3.5rem;
-        height: 3.5rem;
-    }
-    
-    .navbar h1 {
-        font-size: 1.1rem;
+        grid-column: 1;
+        grid-row: 1;
+        width: 3rem;
+        height: 3rem;
     }
 
+    .divMayor h1 {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: center;
+        font-size: clamp(1rem, 4.5vw, 1.3rem);
+        white-space: normal;
+        text-align: center;
+    }
+
+    .menuButton {
+        grid-column: 3;
+        grid-row: 1;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+
+        width: 2.75rem;
+        height: 2.75rem;
+        padding: 0.5rem;
+
+        background: transparent;
+        border: 1px solid #D7E0EA;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .menuButton span {
+        display: block;
+        width: 1.35rem;
+        height: 2px;
+        background: #172033;
+        border-radius: 2px;
+    }
 
     .divContainer {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 0.5rem 1.5rem;
+        display: none;
+        grid-column: 1 / -1;
+        grid-row: 2;
+
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
         width: 100%;
+        padding-top: 0.35rem;
+    }
+
+    .menuAbierto {
+        display: flex;
     }
 
     .pOptions {
-        padding: 0.4rem 0;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.85rem 0.5rem;
+        text-align: center;
         font-size: 1rem;
+        border-top: 1px solid #E2E8F0;
+    }
+
+    .pOptions::after {
+        display: none;
+    }
+
+    .pOptions:hover {
+        background: #F1F7FF;
+        border-radius: 6px;
     }
 }

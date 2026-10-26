@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 1rem;
 
     position: relative;
     z-index: 10;
@@ -26,6 +26,14 @@
     object-fit: contain;
 
     cursor: pointer;
+}
+.divMayor h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0066cc;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .divContainer {
@@ -92,6 +100,11 @@
         width: 3.5rem;
         height: 3.5rem;
     }
+    
+    .navbar h1 {
+        font-size: 1.1rem;
+    }
+
 
     .divContainer {
         justify-content: center;

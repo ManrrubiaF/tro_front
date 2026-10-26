@@ -8,7 +8,8 @@ export default function NavBar (){
 
     return(
         <div className={Styles.divMayor}>
-            <img src={logo} className={Styles.logo} />               
+            <img src={logo} className={Styles.logo} /> 
+            <h1>Tu Regalo Original</h1>              
             <div className={Styles.divContainer}>                
                 <p className={Styles.pOptions} onClick={()=> navigate('/')}>
                     Home

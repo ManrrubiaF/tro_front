@@ -4,7 +4,7 @@
     align-items: center;
 
     width: 100%;
-    min-height: 90vh;
+    height: fit-content;
     box-sizing: border-box;
 
     background:
@@ -179,6 +179,7 @@
     .productsContainer {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
+    
 }
 
 @media (max-width: 768px) {

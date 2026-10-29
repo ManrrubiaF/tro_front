@@ -1,10 +1,11 @@
 import axios from "axios";
 import Styles from './CreateProduct.module.css'
-import { useAppSelector } from "../../../Utils/Redux/Hooks";
+import { useAppDispatch, useAppSelector } from "../../../Utils/Redux/Hooks";
 import type { ChangeEvent } from "react";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import { addProduct } from "../../../Utils/Redux/productSlice";
 
 interface Product {
     
@@ -20,6 +21,7 @@ export default function CreateProduct(){
 
     const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY
     const UPLOAD_PRESET = import.meta.env.VITE_PRESET
+    const dispatch = useAppDispatch();
     const BACK_URL = import.meta.env.VITE_API_URL;
     const userData = useAppSelector((state) => state.user)
     const [uploadingObj, setUploadingObj] = useState(false);
@@ -36,6 +38,16 @@ export default function CreateProduct(){
         }
 
     )
+    const products = useAppSelector((state) => state.products.products);
+
+    const categories = [
+        ...new Map(
+            products
+                .map((product) => product.category.trim())
+                .filter(Boolean)
+                .map((category) => [category.toLowerCase(), category])
+        ).values()
+    ];
 
     console.log(newProduct)
 
@@ -71,13 +83,16 @@ export default function CreateProduct(){
         try {
             const response = await axios.post(`${BACK_URL}/product/create`,
                 newProduct,
-                /*{
+                {
                     headers:{
                         authorization: `Bearer ${userData?.token}`
                     }
-                }*/
+                }
             )
-            console.log(response.data)
+            
+            dispatch(addProduct(response.data))           
+            
+
             setnewProduct(
                 {
                     
@@ -95,6 +110,7 @@ export default function CreateProduct(){
             console.error(error)            
         }        
     }
+    
 
     const handleImage = (imageUpdate: string) => {
         setnewProduct({
@@ -204,14 +220,26 @@ export default function CreateProduct(){
                 type="checkbox"
                 checked={newProduct.active}
                 onChange={()=>setnewProduct({...newProduct, active: !newProduct.active})}
-            />
-            <label>Categoria</label>
-            <input 
-                type="text"
-                name="category"
+            />            
+            <label htmlFor="category">Categoría</label>
+            <input
+                id="category"
+                list="product-categories"
                 value={newProduct.category}
-                onChange={handleChange}
+                onChange={(e) =>
+                    setnewProduct({
+                        ...newProduct,
+                        category: e.target.value
+                    })
+                }
+                placeholder="Escribí o elegí una categoría"
             />
+
+            <datalist id="product-categories">
+                {categories.map((category) => (
+                    <option key={category} value={category} />
+                ))}
+            </datalist>
             <label> Foto </label>
             {newProduct.photos[0] ? (
                 <div className={Styles.photoContainer}>

@@ -49,7 +49,6 @@ export default function CreateProduct(){
         ).values()
     ];
 
-    console.log(newProduct)
 
     const upload = async (file: string | Blob) => {
         const formdata = new FormData();

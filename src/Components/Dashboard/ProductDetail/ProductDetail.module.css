@@ -18,6 +18,64 @@
     font-family: Arial, sans-serif;
 }
 
+/* Toast */
+
+.toast {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+
+    min-width: 260px;
+    max-width: 350px;
+    padding: 14px 20px;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+    animation: toastIn 0.3s ease;
+}
+
+.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.info {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+@keyframes toastIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .toast {
+        top: 15px;
+        right: 15px;
+        left: 15px;
+        min-width: unset;
+        max-width: unset;
+    }
+}
+
 /* Etiquetas de los campos */
 
 .divMayor > label {

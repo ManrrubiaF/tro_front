@@ -98,7 +98,7 @@ export default function Products(){
                     </div>
                 ))}
             </div>
-            <Pagination />
+            <Pagination productsToPaginate={allProduct} />
             
         </div>
         

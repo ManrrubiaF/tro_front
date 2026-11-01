@@ -47,11 +47,22 @@ const productSlice = createSlice({
             state.products.push(action.payload);
             state.productToShow.push(action.payload);
         },
+        updateProduct: (state, action: PayloadAction<Product>) => {
+    const updatedProduct = action.payload;
+
+        state.products = state.products.map(product =>
+            product.id === updatedProduct.id ? updatedProduct : product
+        );
+
+        state.productToShow = state.productToShow.map(product =>
+            product.id === updatedProduct.id ? updatedProduct : product
+        );
+    },
     }
 });
 
 
 
-export const {addProduct, setProducts, resetProducts, setProductToShow, resetProductToShow} = productSlice.actions;
+export const {updateProduct, addProduct, setProducts, resetProducts, setProductToShow, resetProductToShow} = productSlice.actions;
 export default productSlice.reducer;
 

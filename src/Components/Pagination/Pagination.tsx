@@ -1,35 +1,36 @@
+
 import Styles from './Pagination.module.css'
 import { useAppDispatch, useAppSelector } from '../../Utils/Redux/Hooks'
 import { useEffect } from 'react';
 import { setCurrentPage, setPageTotal } from '../../Utils/Redux/paginationSlice';
 
-export default function Pagination() {
+interface Props {
+    productsToPaginate?: any[];
+}
+
+export default function Pagination({ productsToPaginate }: Props) {
     const { currentPage, totalPage, elementsPerPage } = useAppSelector((state) => state.pagination);
     const dispatch = useAppDispatch();
-    const products = useAppSelector((state) => state.products.productToShow)
+    const publicProducts = useAppSelector((state) => state.products.productToShow);
+
+    const products = productsToPaginate ?? publicProducts;
 
     useEffect(() => {
-        setPagination();
-    }, [products])
+        const totalP = Math.ceil(products.length / elementsPerPage);
+        dispatch(setPageTotal(totalP));
+    }, [products.length, elementsPerPage]);
 
-    const setPagination = () => {
-        const totalP = Math.ceil(products.length / elementsPerPage)
-        if (totalP) {
-            dispatch(setPageTotal(totalP));
-        }
-    }
     const handleNext = () => {
-        const nextPage = currentPage + 1
-        dispatch(setCurrentPage(nextPage))
-    }
-    const handlePrevious = () => {
-        const previousPage = currentPage - 1
-        dispatch(setCurrentPage(previousPage));
-    }
-    const handlePageChange = (number: number) => {
-        dispatch(setCurrentPage(number))
+        dispatch(setCurrentPage(currentPage + 1));
     }
 
+    const handlePrevious = () => {
+        dispatch(setCurrentPage(currentPage - 1));
+    }
+
+    const handlePageChange = (number: number) => {
+        dispatch(setCurrentPage(number));
+    }
 
     return (
         <div className={Styles.divMayor}>
@@ -45,6 +46,7 @@ export default function Pagination() {
                         const buttonClasses = isCurrentPage
                             ? `${Styles.pageButton} ${Styles.currentPage}`
                             : Styles.pageButton;
+
                         if (
                             page === 1 ||
                             page === totalPage ||
@@ -67,7 +69,6 @@ export default function Pagination() {
                         <button onClick={handleNext}> {'>'} </button>
                     )}
                 </div>
-
             </div>
         </div>
     )
